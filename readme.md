@@ -17,8 +17,8 @@ Users can view, add, edit, and delete books.
 ## Features
 
 - View Books – Displays all books   
-- Add Book** – Add a new book with title and author
-- Edit Book** – Edit book title and author 
+- Add Book – Add a new book with title and author
+- Edit Book – Edit book title and author 
 - Delete Book – Remove a book from the list
 
 
