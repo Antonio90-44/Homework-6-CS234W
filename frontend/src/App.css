@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
-  color: #333;
+  color: #000000;
 }
 
 .app-container {
@@ -39,7 +39,7 @@ button {
   padding: 4px 8px;
   border: none;
   margin-right: 4px;
-  background-color: rgb(88, 199, 255);
+  background-color: rgb(202, 148, 21);
 }
 
 
@@ -53,4 +53,41 @@ form input[type="text"] {
 
 .add-book-form button {
   padding: 5px 10px;
+}
+.app-container {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 10px;
+}
+
+.header {
+  background-color: #deae34;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.header nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.booksList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.book {
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+footer {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #deae34;
 }

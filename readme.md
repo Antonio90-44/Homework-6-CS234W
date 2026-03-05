@@ -1,37 +1,23 @@
-# HW6: Connecting React to Express + MongoDB
+# HW7: Routing, Component Architecture, & UI State
 ## Antonio De la Merced
 
 ## Overview
-A book app using React for the frontend and Express + MongoDB for the backend.  
-Users can view, add, edit, and delete books.
-
-## API Endpoints
-
- Method | Endpoint       | Action 
---------|----------------|--------
- GET    | `/books`       | Get all books 
- POST   | `/books`       | Add a new book 
- PUT    | `/books/:id`   | Update a book by ID 
- DELETE | `/books/:id`   | Delete a book by ID 
-
+A book app using React for the frontend and Express + MongoDB Atlas for the backend.  
+Users can view, add, edit, and delete books, and filter them by genre.
 ## Features
+- All Books page with genre filter.  
+- Add Book page.  
+- Inline edit/delete.  
+- Reusable components: `Header`, `Footer`, `Book`, `AddBookForm`.  
 
-- View Books – Displays all books   
-- Add Book** – Add a new book with title and author
-- Edit Book** – Edit book title and author 
-- Delete Book – Remove a book from the list
+## Run
+1. Backend: `cd backend && npm install && node server.js`  
+2. Frontend: `cd frontend && npm install && npm start`  
 
+## Test
+- Add a book → shows in list.  
+- Edit a book → changes saved.  
+- Delete a book → removed.  
+- Filter by genre → shows only matching books.  
+- Navigation works without reload.
 
-## How to Run
-
-### Backend
- bash
-cd backend
-npm install
-npm start
-
-### FrontEnd 
- bash
-cd frontend
-npm install
-npm start

@@ -1,29 +1,27 @@
-// AddBookForm.jsx
+//AddBookForm
+//Antonio De la Merced
+//03/04/2026
 import { useState } from "react";
 
 const AddBookForm = ({ onAddBook }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [genre, setGenre] = useState("");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const newBook = { title, author };
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newBook = { title, author, genre };
     try {
-      const response = await fetch("http://localhost:3000/books", {
+      const res = await fetch("http://localhost:3000/books", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newBook),
       });
-
-      const data = await response.json();
-
-     
+      const data = await res.json();
       onAddBook(data.book);
-
       setTitle("");
       setAuthor("");
+      setGenre("");
     } catch (err) {
       console.error("Error adding book:", err);
     }
@@ -44,6 +42,12 @@ const AddBookForm = ({ onAddBook }) => {
         value={author}
         onChange={(e) => setAuthor(e.target.value)}
         required
+      />
+      <input
+        type="text"
+        placeholder="Genre"
+        value={genre}
+        onChange={(e) => setGenre(e.target.value)}
       />
       <button type="submit">Add Book</button>
     </form>
