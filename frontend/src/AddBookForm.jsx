@@ -1,34 +1,48 @@
-//AddBookForm
 //Antonio De la Merced
-//03/04/2026
-import { useState } from "react";
+//03/11/2026
 
-const AddBookForm = ({ onAddBook }) => {
+import { useState } from "react";
+import { useBooks } from "./context/BookContext";
+
+const AddBookForm = () => {
+
+  const { addBook } = useBooks();
+
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
+
     const newBook = { title, author, genre };
+
     try {
+
       const res = await fetch("http://localhost:3000/books", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newBook),
       });
+
       const data = await res.json();
-      onAddBook(data.book);
+
+      addBook(data.book);
+
       setTitle("");
       setAuthor("");
       setGenre("");
+
     } catch (err) {
       console.error("Error adding book:", err);
     }
   };
 
   return (
+
     <form onSubmit={handleSubmit}>
+
       <input
         type="text"
         placeholder="Title"
@@ -36,6 +50,7 @@ const AddBookForm = ({ onAddBook }) => {
         onChange={(e) => setTitle(e.target.value)}
         required
       />
+
       <input
         type="text"
         placeholder="Author"
@@ -43,14 +58,18 @@ const AddBookForm = ({ onAddBook }) => {
         onChange={(e) => setAuthor(e.target.value)}
         required
       />
+
       <input
         type="text"
         placeholder="Genre"
         value={genre}
         onChange={(e) => setGenre(e.target.value)}
       />
+
       <button type="submit">Add Book</button>
+
     </form>
+
   );
 };
 

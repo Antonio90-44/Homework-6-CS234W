@@ -5,7 +5,7 @@
 A book app using React for the frontend and Express + MongoDB Atlas for the backend.  
 Users can view, add, edit, and delete books, and filter them by genre.
 ## Features
-- All Books page with genre filter.  
+- custom hook useFetch
 - Add Book page.  
 - Inline edit/delete.  
 - Reusable components: `Header`, `Footer`, `Book`, `AddBookForm`.  
@@ -19,5 +19,5 @@ Users can view, add, edit, and delete books, and filter them by genre.
 - Edit a book → changes saved.  
 - Delete a book → removed.  
 - Filter by genre → shows only matching books.  
-- Navigation works without reload.
+- Multiple components access book data using React Context
 

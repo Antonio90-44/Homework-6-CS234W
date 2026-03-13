@@ -1,52 +1,21 @@
-// BookList.jsx
-import { useEffect, useState } from "react";
+import { useBooks } from "../context/BookContext";
 import Book from "./Book";
 import AddBookForm from "./AddBookForm";
 
 const BookList = () => {
-  const [books, setBooks] = useState([]);
+  const { books, loading, error } = useBooks();
 
-  // GET books from API
-  useEffect(() => {
-    fetch("http://localhost:3000/books")
-      .then((res) => res.json())
-      .then((data) => setBooks(data));
-  }, []);
-
-  const addBook = (newBook) => {
-    setBooks([...books, newBook]);
-  };
-
-  const deleteBook = async (id) => {
-    await fetch(`http://localhost:3000/books/${id}`, { method: "DELETE" });
-    setBooks(books.filter((book) => book._id !== id));
-  };
-
-  const editBook = async (id, updatedData) => {
-    const response = await fetch(`http://localhost:3000/books/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedData),
-    });
-    const data = await response.json();
-
-    setBooks(
-      books.map((book) => (book._id === id ? data.book : book))
-    );
-  };
+  if (loading) return <p>Loading books...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!books || books.length === 0) return <p>No books found.</p>;
 
   return (
     <div>
       <h2>Books</h2>
-      <AddBookForm onAddBook={addBook} />
+      <AddBookForm />
       <div className="booksList">
         {books.map((book) => (
-          <Book
-            key={book._id}
-            book={book}
-            onDelete={deleteBook}
-            onEdit={editBook}
-          />
+          <Book key={book._id} book={book} />
         ))}
       </div>
     </div>
